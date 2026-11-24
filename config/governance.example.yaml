@@ -1,0 +1,18 @@
+# Example governance definition (synthetic names). Copy to config/governance.yaml.
+organization: https://dev.azure.com/contoso
+project: Contoso
+repositories:
+  - name: contoso-api
+    branches:
+      - name: main
+        policies:
+          min_reviewers: 2
+          creator_vote_counts: false
+          reset_votes_on_push: true
+          require_comment_resolution: true
+          require_work_item_link: true
+          merge_strategy: squash            # squash | merge | rebase
+          build_validation:
+            - display_name: contoso-api-ci
+              pipeline_id: 12               # replace with the real pipeline id
+              valid_duration_minutes: 720
